@@ -1,34 +1,47 @@
 import { StyleSheet, Text, View, ScrollView } from "react-native";
+import React from "react";
 import Card from "./src/components/Card";
 
 export default function App() {
-  const filmes = [
+  const [filmes, setFilmes] = React.useState([
     {
+      id: 1,
       nome: "Mauro",
       genero: "Aventura",
       capa: "https://uploads.jovemnerd.com.br/wp-content/uploads/2023/02/super_mario_bros_filme_poster__2b3rnu52-758x1200.jpeg",
     },
     {
+      id: 2,
       nome: "Meu Gru",
       genero: "Biografia",
       capa: "https://static.wikia.nocookie.net/meu-malvado-favorito/images/f/f1/Image1.jpg/revision/latest?cb=20130724012419&path-prefix=pt-br",
     },
     {
+      id: 3,
       nome: "Morbius",
       genero: "Bom",
       capa: "https://pbs.twimg.com/media/FFyT_6GVgAAGgrG?format=jpg&name=900x900",
     },
     {
+      id: 4,
       nome: "Sharknado 5",
       genero: "Tubação",
       capa: "https://m.media-amazon.com/images/M/MV5BMjQ3Mzk5NzAwNV5BMl5BanBnXkFtZTgwNDkwOTc3MjI@._V1_FMjpg_UX1000_.jpg",
     },
     {
+      id: 5,
       nome: "O Biscoito Assassino",
       genero: "Nem sei",
       capa: "https://media.fstatic.com/STk4Yah-zE0ROG-KNjTZFvF3yQw=/322x478/smart/filters:format(webp)/media/movies/covers/2010/06/1145f96568edd14ede57b28bf156369f.jpg",
     },
-  ];
+  ]);
+  const removerItem = (id) => {
+    const index = filmes.findIndex((filme) => filme.id === id);
+    const novaLista = [...filmes];
+    novaLista.splice(index, 1);
+    setFilmes(novaLista);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -36,7 +49,13 @@ export default function App() {
       </View>
       <ScrollView>
         {filmes.map((filme) => (
-          <Card nome={filme.nome} genero={filme.genero} capa={filme.capa} />
+          <Card
+            nome={filme.nome}
+            genero={filme.genero}
+            capa={filme.capa}
+            removerItem={() => removerItem(filme.id)}
+            key={filme.id}
+          />
         ))}
       </ScrollView>
     </View>

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 export default function Card(props) {
   return (
@@ -6,6 +6,9 @@ export default function Card(props) {
       <Image source={{ uri: props.capa }} style={styles.capa} />
       <Text style={styles.nomeFilme}>{props.nome}</Text>
       <Text style={styles.genero}>{props.genero}</Text>
+      <TouchableOpacity onPress={props.removerItem} style={styles.botao}>
+        <Text style={{ color: "white", fontWeight: "bold" }}>Deletar</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -33,5 +36,12 @@ const styles = StyleSheet.create({
   genero: {
     color: "grey",
     fontSize: 15,
+  },
+  botao: {
+    backgroundColor: "red",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    margin: 10,
   },
 });
