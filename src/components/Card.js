@@ -5,7 +5,7 @@ export default function Card(props) {
     <View style={styles.card}>
       <Image source={{ uri: props.capa }} style={styles.capa} />
       <Text style={styles.nomeFilme}>{props.nome}</Text>
-      <Text style={styles.genero}>{props.genero}</Text>
+      <Text style={styles.genero}>Gênero(s): {props.genero}</Text>
       <TouchableOpacity onPress={props.removerItem} style={styles.botao}>
         <Text style={{ color: "white", fontWeight: "bold" }}>Deletar</Text>
       </TouchableOpacity>

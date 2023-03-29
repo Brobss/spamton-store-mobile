@@ -34,6 +34,30 @@ export default function App() {
       genero: "Nem sei",
       capa: "https://media.fstatic.com/STk4Yah-zE0ROG-KNjTZFvF3yQw=/322x478/smart/filters:format(webp)/media/movies/covers/2010/06/1145f96568edd14ede57b28bf156369f.jpg",
     },
+    {
+      id: 6,
+      nome: "Vivemos em uma Sociedade que",
+      genero: "Drama",
+      capa: "https://img.elo7.com.br/product/original/2A1A4B7/big-poster-filme-joker-coringa-joaquin-phoenix-tam-90x60-cm-nerd.jpg",
+    },
+    {
+      id: 7,
+      nome: "Among Us",
+      genero: "Terror / Mistério",
+      capa: "https://upload.wikimedia.org/wikipedia/pt/f/f9/Thing_1982.png",
+    },
+    {
+      id: 8,
+      nome: "Deltarune O Filme",
+      genero: "Muitos",
+      capa: "https://i.etsystatic.com/31113100/r/il/858258/3577034661/il_794xN.3577034661_lvnd.jpg",
+    },
+    {
+      id: 9,
+      nome: "Tubarão de 6 cabeças",
+      genero: "Nem me pergunte",
+      capa: "https://media.fstatic.com/sXKpFVatQNEju1RsLcNnKgc9xOo=/322x478/smart/filters:format(webp)/media/movies/covers/2018/05/20180509_222042.png",
+    },
   ]);
   const removerItem = (id) => {
     const index = filmes.findIndex((filme) => filme.id === id);
