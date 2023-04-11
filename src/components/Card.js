@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
     fontSize: 30,
     margin: 10,
     padding: 20,
-    alignContent: "center",
     alignItems: "center",
+    width: 200,
   },
   capa: {
     resizeMode: "cover",
