@@ -2,7 +2,12 @@ import React from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Image } from "react-native";
+import { Image, StatusBar } from "react-native";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons/faCartShopping";
+import { faHouse } from "@fortawesome/free-solid-svg-icons/faHouse";
+import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
+import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
 
 import Home from "./screens/Home";
 import Livros from "./screens/Livros";
@@ -12,8 +17,30 @@ import Series from "./screens/Series";
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
+  const CorBtn = "white";
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: true,
+        tabBarStyle: {
+          color: "white",
+          backgroundColor: "black",
+          borderTopWidth: 0,
+        },
+        headerStyle: {
+          backgroundColor: "black",
+        },
+        headerTitleStyle: {
+          color: "#fff",
+          elevation: 0,
+          shadowOpacity: 0,
+          borderBottomWidth: 0,
+        },
+        tabBarLabelStyle: {
+          display: "none",
+        },
+      })}
+    >
       <Tab.Screen
         name="Home"
         component={Home}
@@ -21,11 +48,10 @@ function MyTabs() {
           title: "Home",
           tabBarIcon: ({ size, focused, color }) => {
             return (
-              <Image
-                style={{ width: size, height: size }}
-                source={{
-                  uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Home-icon.svg/2048px-Home-icon.svg.png",
-                }}
+              <FontAwesomeIcon
+                icon={faHouse}
+                color={focused ? "red" : "white"}
+                size={focused ? "30" : "22"}
               />
             );
           },
@@ -35,14 +61,12 @@ function MyTabs() {
         name="Carrinho"
         component={Filmes}
         options={{
-          title: "Carrinho",
           tabBarIcon: ({ size, focused, color }) => {
             return (
-              <Image
-                style={{ width: size, height: size }}
-                source={{
-                  uri: "https://creazilla-store.fra1.digitaloceanspaces.com/icons/3258713/shopping-cart-icon-md.png",
-                }}
+              <FontAwesomeIcon
+                icon={faCartShopping}
+                color={focused ? "red" : "white"}
+                size={focused ? "30" : "22"}
               />
             );
           },
@@ -55,11 +79,10 @@ function MyTabs() {
           title: "Conta",
           tabBarIcon: ({ size, focused, color }) => {
             return (
-              <Image
-                style={{ width: 20, height: 25 }}
-                source={{
-                  uri: "https://icon-library.com/images/my-account-icon/my-account-icon-3.jpg",
-                }}
+              <FontAwesomeIcon
+                icon={faUser}
+                color={focused ? "red" : "white"}
+                size={focused ? "30" : "22"}
               />
             );
           },
@@ -72,11 +95,10 @@ function MyTabs() {
           title: "Opções",
           tabBarIcon: ({ size, focused, color }) => {
             return (
-              <Image
-                style={{ width: size, height: size }}
-                source={{
-                  uri: "https://cdn-icons-png.flaticon.com/512/56/56763.png",
-                }}
+              <FontAwesomeIcon
+                icon={faBars}
+                color={focused ? "red" : "white"}
+                size={focused ? "30" : "22"}
               />
             );
           },
@@ -89,6 +111,7 @@ function MyTabs() {
 export default function App() {
   return (
     <NavigationContainer>
+      <StatusBar backgroundColor="black" barStyle="light-content" />
       <MyTabs />
     </NavigationContainer>
   );
