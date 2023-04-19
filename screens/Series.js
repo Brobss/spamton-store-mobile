@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import React from "react";
-import Card from "../src/components/Card";
+import CardA from "../src/components/CardA";
 
 export default function App() {
   const [series, setSeries] = React.useState([
@@ -73,7 +73,7 @@ export default function App() {
       </View>
       <ScrollView>
         {series.map((serie) => (
-          <Card
+          <CardA
             nome={serie.nome}
             genero={serie.genero}
             capa={serie.capa}

@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import React from "react";
-import Card from "../src/components/Card";
+import CardA from "../src/components/CardA";
 
 export default function App() {
   const [livros, setLivros] = React.useState([
@@ -73,7 +73,7 @@ export default function App() {
       </View>
       <ScrollView>
         {livros.map((livro) => (
-          <Card
+          <CardA
             nome={livro.nome}
             genero={livro.genero}
             capa={livro.capa}
