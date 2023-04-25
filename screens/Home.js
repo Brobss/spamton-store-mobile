@@ -19,101 +19,125 @@ export default function App() {
     },
     {
       id: 3,
-      nome: "Morbius",
-      preco: "Bom",
+      nome: "DVD Morbius HD",
+      preco: "10,50",
       capa: "https://pbs.twimg.com/media/FFyT_6GVgAAGgrG?format=jpg&name=900x900",
     },
     {
       id: 4,
-      nome: "Sharknado 5",
-      preco: "Tubação",
-      capa: "https://m.media-amazon.com/images/M/MV5BMjQ3Mzk5NzAwNV5BMl5BanBnXkFtZTgwNDkwOTc3MjI@._V1_FMjpg_UX1000_.jpg",
+      nome: "Banana (0.5kg)",
+      preco: "5,75",
+      capa: "https://img.freepik.com/vetores-gratis/bando-de-banana-amarela-madura-de-vetor-isolado-no-fundo-branco_1284-45456.jpg?w=360",
     },
     {
       id: 5,
-      nome: "O Biscoito Assassino",
-      preco: "Nem sei",
-      capa: "https://media.fstatic.com/STk4Yah-zE0ROG-KNjTZFvF3yQw=/322x478/smart/filters:format(webp)/media/movies/covers/2010/06/1145f96568edd14ede57b28bf156369f.jpg",
+      nome: "Armas de fogo",
+      preco: "50",
+      capa: "https://www.clubedetiroitajai.com.br/wp-content/uploads/2022/05/voce-sabe-qual-e-a-origem-das-armas-de-fogo-acesse-e-descubra-tudo-sobre.jpg",
     },
     {
       id: 6,
-      nome: "Vivemos em uma Sociedade que",
-      preco: "Drama",
-      capa: "https://img.elo7.com.br/product/original/2A1A4B7/big-poster-filme-joker-coringa-joaquin-phoenix-tam-90x60-cm-nerd.jpg",
+      nome: "Videotutorial Sun Tzu",
+      preco: "5 milhões",
+      capa: "https://upload.wikimedia.org/wikipedia/commons/c/cf/%E5%90%B4%E5%8F%B8%E9%A9%AC%E5%AD%99%E6%AD%A6.jpg",
     },
     {
       id: 7,
-      nome: "Among Us",
-      preco: "Terror / Mistério",
-      capa: "https://upload.wikimedia.org/wikipedia/pt/f/f9/Thing_1982.png",
+      nome: "Casca de banana",
+      preco: "2,75",
+      capa: "https://vitat.com.br/wp-content/uploads/2022/04/casca-de-banana-1.jpg",
     },
     {
       id: 8,
-      nome: "Deltarune O Filme",
-      preco: "Muitos",
-      capa: "https://i.etsystatic.com/31113100/r/il/858258/3577034661/il_794xN.3577034661_lvnd.jpg",
+      nome: "Florianópolis",
+      preco: "7,50",
+      capa: "https://magazine.zarpo.com.br/wp-content/uploads/2023/01/capa-o-que-fazer-florianopolis.jpg",
     },
     {
       id: 9,
-      nome: "Tubarão de 6 cabeças",
-      preco: "Nem me pergunte",
-      capa: "https://media.fstatic.com/sXKpFVatQNEju1RsLcNnKgc9xOo=/322x478/smart/filters:format(webp)/media/movies/covers/2018/05/20180509_222042.png",
+      nome: "1 Unidade de Amendoim",
+      preco: "0,50",
+      capa: "https://thumbs.dreamstime.com/b/um-amendoim-isolado-85881501.jpg",
+    },
+    {
+      id: 10,
+      nome: "Super Luigi para o Xbox One",
+      preco: "0,50",
+      capa: "https://steamuserimages-a.akamaihd.net/ugc/1467563393551129446/5D6824881D455B66A71853918555FD343B6C21B0/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true",
     },
   ]);
   const [filmes2, setFilmes2] = React.useState([
     {
       id: 1,
-      nome: "Bicicleta",
-      preco: "10000,00",
-      capa: "https://m.media-amazon.com/images/S/aplus-media-library-service-media/e34cebad-ca71-4de2-a4d1-b74d5e7168cf.__CR0,0,970,600_PT0_SX970_V1___.png",
+      nome: "Fone de ouvido vegano",
+      preco: "20,00",
+      capa: "https://i.imgur.com/m6NBhBm.jpg",
     },
     {
       id: 2,
-      nome: "Among Action Figure",
-      preco: "95,50",
-      capa: "https://ae01.alicdn.com/kf/H7a083e0513714932a2578cca8a4aac75x.jpg?width=1920&height=1920&hash=3840",
+      nome: "Recorte do Obama",
+      preco: "35,60",
+      capa: "https://m.media-amazon.com/images/I/51oxbTodnfL.jpg",
     },
     {
       id: 3,
-      nome: "Morbius",
-      preco: "Bom",
-      capa: "https://pbs.twimg.com/media/FFyT_6GVgAAGgrG?format=jpg&name=900x900",
+      nome: "Super Mario para o PS4",
+      preco: "55,50",
+      capa: "https://i1.sndcdn.com/artworks-Zhp4Hc1szbkYin1Z-CkHDCA-t500x500.jpg",
     },
     {
       id: 4,
-      nome: "Sharknado 5",
-      preco: "Tubação",
+      nome: "DVD Sharknado 5 8K",
+      preco: "50,00",
       capa: "https://m.media-amazon.com/images/M/MV5BMjQ3Mzk5NzAwNV5BMl5BanBnXkFtZTgwNDkwOTc3MjI@._V1_FMjpg_UX1000_.jpg",
     },
     {
       id: 5,
-      nome: "O Biscoito Assassino",
-      preco: "Nem sei",
-      capa: "https://media.fstatic.com/STk4Yah-zE0ROG-KNjTZFvF3yQw=/322x478/smart/filters:format(webp)/media/movies/covers/2010/06/1145f96568edd14ede57b28bf156369f.jpg",
+      nome: "Peppino",
+      preco: "3,25",
+      capa: "https://d332juqdd9b8hn.cloudfront.net/wp-content/uploads/2023/01/PIZZA-TOWER-SCREENSHOT.jpg",
     },
     {
       id: 6,
-      nome: "Vivemos em uma Sociedade que",
-      preco: "Drama",
-      capa: "https://img.elo7.com.br/product/original/2A1A4B7/big-poster-filme-joker-coringa-joaquin-phoenix-tam-90x60-cm-nerd.jpg",
+      nome: "Fusca",
+      preco: "120,99",
+      capa: "https://motortudo.com/wp-content/uploads/2019/07/cropped-Fusca-1500-1973-Motor-Tudo-0.jpg",
     },
     {
       id: 7,
-      nome: "Among Us",
-      preco: "Terror / Mistério",
-      capa: "https://upload.wikimedia.org/wikipedia/pt/f/f9/Thing_1982.png",
+      nome: "Avião",
+      preco: "10,99",
+      capa: "https://cdn.panrotas.com.br/portal-panrotas-statics/media-files-cache/334042/e66c929a0d582bcde0c05fcc44d3742014aviaodeafrotamaismagicadomundo/77,0,2412,1440/1206,720,0.28/0/default.jpg",
     },
     {
       id: 8,
-      nome: "Deltarune O Filme",
-      preco: "Muitos",
-      capa: "https://i.etsystatic.com/31113100/r/il/858258/3577034661/il_794xN.3577034661_lvnd.jpg",
+      nome: "Gol Quadrado",
+      preco: "Gol Quadrado",
+      capa: "https://quatrorodas.abril.com.br/wp-content/uploads/2018/02/chr8486-dng.jpg?quality=70&strip=info",
     },
     {
       id: 9,
-      nome: "Tubarão de 6 cabeças",
-      preco: "Nem me pergunte",
-      capa: "https://media.fstatic.com/sXKpFVatQNEju1RsLcNnKgc9xOo=/322x478/smart/filters:format(webp)/media/movies/covers/2018/05/20180509_222042.png",
+      nome: "Guilherme Tamanhinho",
+      preco: "10,99",
+      capa: "https://static.wikia.nocookie.net/cnfanon/images/8/82/Dexter.jpg/revision/latest/scale-to-width-down/445?cb=20130406175710",
+    },
+    {
+      id: 10,
+      nome: "Ácido sulfúrico",
+      preco: "25,75",
+      capa: "https://fontagua.com.br/wp-content/webp-express/webp-images/uploads/2023/01/agua-cristalina-1160x773.jpg.webp",
+    },
+    {
+      id: 11,
+      nome: "Saul Goodman",
+      preco: "45,65",
+      capa: "https://media.tenor.com/1y8zDc-ll-EAAAAd/3d-saul-saul-goodman.gif",
+    },
+    {
+      id: 12,
+      nome: "AAAA",
+      preco: "44,44",
+      capa: "https://pbs.twimg.com/media/FMRQx-5XEAM5Wb7.jpg",
     },
   ]);
 
@@ -126,21 +150,21 @@ export default function App() {
 
   return (
     <>
-      <View style={styles.container}>
-        <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-          <View style={{ flex: 1 }}>
-            <ScrollView contentContainerStyle={styles.scrollViewContainerH}>
-              {filmes.map((filme) => (
-                <CardA
-                  nome={filme.nome}
-                  preco={filme.preco}
-                  capa={filme.capa}
-                  removerItem={() => removerItem(filme.id)}
-                  key={filme.id}
-                />
-              ))}
-            </ScrollView>
-          </View>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.titulo}>Recomendados</Text>
+          <ScrollView horizontal pagingEnabled>
+            {filmes.map((filme) => (
+              <CardA
+                nome={filme.nome}
+                preco={filme.preco}
+                capa={filme.capa}
+                removerItem={() => removerItem(filme.id)}
+                key={filme.id}
+              />
+            ))}
+          </ScrollView>
+          <Text style={styles.titulo}>Outros Produtos</Text>
           <ScrollView contentContainerStyle={styles.scrollViewContainer}>
             {filmes2.map((filme) => (
               <CardB
@@ -152,8 +176,8 @@ export default function App() {
               />
             ))}
           </ScrollView>
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     </>
   );
 }
@@ -165,6 +189,7 @@ const styles = StyleSheet.create({
   titulo: {
     color: "white",
     fontSize: 30,
+    margin: 10,
   },
   scrollViewContainer: {
     flexDirection: "row",
@@ -172,7 +197,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 5,
   },
-  scrollViewContainerH: {
-    flexDirection: "row",
+  bruh: {
+    color: "white",
+    fontSize: 30,
+    padding: 10,
   },
 });

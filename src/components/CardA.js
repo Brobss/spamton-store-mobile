@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     fontSize: 30,
     padding: 5,
-    width: "48%",
-    margin: "1%",
+    width: 200,
+    margin: 5,
   },
   capa: {
     resizeMode: "cover",
