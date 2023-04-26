@@ -10,7 +10,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
 import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
 
 import Home from "./screens/Home";
-import Livros from "./screens/Livros";
+import Conta from "./screens/Conta";
 import Filmes from "./screens/Filmes";
 import Series from "./screens/Series";
 
@@ -51,7 +51,7 @@ function MyTabs() {
               <FontAwesomeIcon
                 icon={faHouse}
                 color={focused ? "red" : "white"}
-                size={focused ? "30" : "22"}
+                size={focused ? 30 : 22}
               />
             );
           },
@@ -74,7 +74,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Conta"
-        component={Livros}
+        component={Conta}
         options={{
           title: "Conta",
           tabBarIcon: ({ size, focused, color }) => {
