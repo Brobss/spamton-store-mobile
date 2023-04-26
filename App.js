@@ -11,7 +11,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
 
 import Home from "./screens/Home";
 import Conta from "./screens/Conta";
-import Filmes from "./screens/Filmes";
+import Carrinho from "./screens/Carrinho";
 import Series from "./screens/Series";
 
 const Tab = createBottomTabNavigator();
@@ -59,7 +59,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Carrinho"
-        component={Filmes}
+        component={Carrinho}
         options={{
           tabBarIcon: ({ size, focused, color }) => {
             return (

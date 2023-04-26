@@ -68,7 +68,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <Text style={styles.titulo}>W.I.P</Text>
+      {/* <View style={styles.header}>
         <Text style={styles.titulo}>Serinhas</Text>
       </View>
       <ScrollView>
@@ -81,7 +82,7 @@ export default function App() {
             key={serie.id}
           />
         ))}
-      </ScrollView>
+      </ScrollView> */}
     </View>
   );
 }
@@ -89,7 +90,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#252525",
     alignItems: "center",
   },
   header: {

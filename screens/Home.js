@@ -1,10 +1,61 @@
 import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
 import CardA from "../src/components/CardA";
 import CardB from "../src/components/CardB";
+import Produto from "../screens/Produto";
 import { Dimensions } from "react-native";
 
+function Tela1({ navigation }) {
+  return (
+    <>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.titulo}>Recomendados</Text>
+          <ScrollView
+            horizontal
+            pagingEnabled
+            snapToInterval={Dimensions.get("window").width}
+          >
+            {filmes.map((filme) => (
+              <CardA
+                nome={filme.nome}
+                preco={filme.preco}
+                capa={filme.capa}
+                removerItem={() => removerItem(filme.id)}
+                key={filme.id}
+              />
+            ))}
+          </ScrollView>
+          <Text style={styles.titulo}>Outros Produtos</Text>
+          <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+            {filmes2.map((filme) => (
+              <CardB
+                nome={filme.nome}
+                preco={filme.preco}
+                capa={filme.capa}
+                removerItem={() => removerItem(filme.id)}
+                key={filme.id}
+              />
+            ))}
+          </ScrollView>
+        </View>
+      </ScrollView>
+    </>
+  );
+}
+
+function Tela2() {
+  return (
+    <View>
+      <Text>Tela 2</Text>
+    </View>
+  );
+}
+
 export default function App() {
+  const Stack = createStackNavigator();
   const [filmes, setFilmes] = React.useState([
     {
       id: 1,
@@ -150,40 +201,12 @@ export default function App() {
   };
 
   return (
-    <>
-      <ScrollView>
-        <View style={styles.container}>
-          <Text style={styles.titulo}>Recomendados</Text>
-          <ScrollView
-            horizontal
-            pagingEnabled
-            snapToInterval={Dimensions.get("window").width}
-          >
-            {filmes.map((filme) => (
-              <CardA
-                nome={filme.nome}
-                preco={filme.preco}
-                capa={filme.capa}
-                removerItem={() => removerItem(filme.id)}
-                key={filme.id}
-              />
-            ))}
-          </ScrollView>
-          <Text style={styles.titulo}>Outros Produtos</Text>
-          <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-            {filmes2.map((filme) => (
-              <CardB
-                nome={filme.nome}
-                preco={filme.preco}
-                capa={filme.capa}
-                removerItem={() => removerItem(filme.id)}
-                key={filme.id}
-              />
-            ))}
-          </ScrollView>
-        </View>
-      </ScrollView>
-    </>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Tela1" component={Tela1} />
+        <Stack.Screen name="Tela2" component={Tela2} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
