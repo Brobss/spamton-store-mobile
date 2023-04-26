@@ -66,7 +66,7 @@ function MyTabs() {
               <FontAwesomeIcon
                 icon={faCartShopping}
                 color={focused ? "red" : "white"}
-                size={focused ? "30" : "22"}
+                size={focused ? 30 : 22}
               />
             );
           },
@@ -82,7 +82,7 @@ function MyTabs() {
               <FontAwesomeIcon
                 icon={faUser}
                 color={focused ? "red" : "white"}
-                size={focused ? "30" : "22"}
+                size={focused ? 30 : 22}
               />
             );
           },
@@ -98,7 +98,7 @@ function MyTabs() {
               <FontAwesomeIcon
                 icon={faBars}
                 color={focused ? "red" : "white"}
-                size={focused ? "30" : "22"}
+                size={focused ? 30 : 22}
               />
             );
           },
