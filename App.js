@@ -11,7 +11,7 @@ import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
 
 import Home from "./screens/Home";
 import Livros from "./screens/Livros";
-import Filmes from "./screens/Filmes";
+import Filmes from "./screens/Carrinho";
 import Series from "./screens/Series";
 
 const Tab = createBottomTabNavigator();
@@ -51,7 +51,7 @@ function MyTabs() {
               <FontAwesomeIcon
                 icon={faHouse}
                 color={focused ? "red" : "white"}
-                size={focused ? "30" : "22"}
+                size={focused ? 30 : 22}
               />
             );
           },
@@ -66,7 +66,7 @@ function MyTabs() {
               <FontAwesomeIcon
                 icon={faCartShopping}
                 color={focused ? "red" : "white"}
-                size={focused ? "30" : "22"}
+                size={focused ? 30 : 22}
               />
             );
           },
@@ -82,7 +82,7 @@ function MyTabs() {
               <FontAwesomeIcon
                 icon={faUser}
                 color={focused ? "red" : "white"}
-                size={focused ? "30" : "22"}
+                size={focused ? 30 : 22}
               />
             );
           },
@@ -98,7 +98,7 @@ function MyTabs() {
               <FontAwesomeIcon
                 icon={faBars}
                 color={focused ? "red" : "white"}
-                size={focused ? "30" : "22"}
+                size={focused ? 30 : 22}
               />
             );
           },

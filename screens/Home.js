@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, ScrollView } from "react-native";
 import React from "react";
 import CardA from "../src/components/CardA";
 import CardB from "../src/components/CardB";
+import { Dimensions } from "react-native";
 
 export default function App() {
   const [filmes, setFilmes] = React.useState([
@@ -153,7 +154,11 @@ export default function App() {
       <ScrollView>
         <View style={styles.container}>
           <Text style={styles.titulo}>Recomendados</Text>
-          <ScrollView horizontal pagingEnabled>
+          <ScrollView
+            horizontal
+            pagingEnabled
+            snapToInterval={Dimensions.get("window").width}
+          >
             {filmes.map((filme) => (
               <CardA
                 nome={filme.nome}

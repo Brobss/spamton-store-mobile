@@ -7,16 +7,42 @@ import {
 } from "react-native";
 import React from "react";
 export default function App() {
+  const itens = [
+    {
+      id: 1,
+      nome: "Among Action Figure",
+      preco: "95,50",
+    },
+    {
+      id: 2,
+      nome: "Saul Goodman",
+      preco: "45,65",
+    },
+  ];
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Itens no Carrinho:</Text>
-      <View style={styles.item}>
-        <Text style={styles.nomeItem}>Among Action Figure</Text>
-        <Text style={styles.precoItem}>R$ 95,50</Text>
-        <TouchableOpacity style={styles.botao}>
-          <Text style={{ color: "white", fontSize: 12 }}>Remover</Text>
+      <ScrollView
+        contentContainerStyle={{ alignItems: "center" }}
+        style={{ width: "100%" }}
+      >
+        {itens.map((item) => (
+          <>
+            <View style={styles.item}>
+              <Text style={styles.nomeItem}>{item.nome}</Text>
+              <Text style={styles.precoItem}>R$ {item.preco}</Text>
+              <TouchableOpacity style={styles.botao}>
+                <Text style={{ color: "white", fontSize: 12 }}>Remover</Text>
+              </TouchableOpacity>
+            </View>
+          </>
+        ))}
+        <TouchableOpacity style={styles.botaoFim}>
+          <Text style={{ color: "white", fontSize: 15, alignSelf: "center" }}>
+            Finalizar Compra
+          </Text>
         </TouchableOpacity>
-      </View>
+      </ScrollView>
     </View>
   );
 }
@@ -62,6 +88,13 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     width: "50%",
     alignSelf: "flex-end",
+    padding: 10,
+    borderRadius: 5,
+  },
+  botaoFim: {
+    backgroundColor: "green",
+    width: "90%",
+    margin: 10,
     padding: 10,
     borderRadius: 5,
   },
