@@ -1,61 +1,17 @@
-import { StyleSheet, Text, View, ScrollView } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import CardA from "../src/components/CardA";
 import CardB from "../src/components/CardB";
 import Produto from "../screens/Produto";
 import { Dimensions } from "react-native";
 
-function Tela1({ navigation }) {
-  return (
-    <>
-      <ScrollView>
-        <View style={styles.container}>
-          <Text style={styles.titulo}>Recomendados</Text>
-          <ScrollView
-            horizontal
-            pagingEnabled
-            snapToInterval={Dimensions.get("window").width}
-          >
-            {filmes.map((filme) => (
-              <CardA
-                nome={filme.nome}
-                preco={filme.preco}
-                capa={filme.capa}
-                removerItem={() => removerItem(filme.id)}
-                key={filme.id}
-              />
-            ))}
-          </ScrollView>
-          <Text style={styles.titulo}>Outros Produtos</Text>
-          <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-            {filmes2.map((filme) => (
-              <CardB
-                nome={filme.nome}
-                preco={filme.preco}
-                capa={filme.capa}
-                removerItem={() => removerItem(filme.id)}
-                key={filme.id}
-              />
-            ))}
-          </ScrollView>
-        </View>
-      </ScrollView>
-    </>
-  );
-}
-
-function Tela2() {
-  return (
-    <View>
-      <Text>Tela 2</Text>
-    </View>
-  );
-}
-
 export default function App() {
-  const Stack = createStackNavigator();
   const [filmes, setFilmes] = React.useState([
     {
       id: 1,
@@ -192,21 +148,63 @@ export default function App() {
       capa: "https://pbs.twimg.com/media/FMRQx-5XEAM5Wb7.jpg",
     },
   ]);
+  const [produtoSelecionado, setProdutoSelecionado] = React.useState(null);
 
-  const removerItem = (id) => {
-    const index = filmes.findIndex((filme) => filme.id === id);
-    const novaLista = [...filmes];
-    novaLista.splice(index, 1);
-    setFilmes(novaLista);
+  const handleProdutoPress = (produto) => {
+    setProdutoSelecionado(produto);
   };
 
+  const handleVoltarPress = () => {
+    setProdutoSelecionado(null);
+  };
+
+  if (produtoSelecionado) {
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity onPress={handleVoltarPress}>
+          <Text style={styles.link}>Voltar</Text>
+        </TouchableOpacity>
+        <Produto produto={produtoSelecionado} />
+      </View>
+    );
+  }
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Tela1" component={Tela1} />
-        <Stack.Screen name="Tela2" component={Tela2} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.titulo}>Recomendados</Text>
+          <ScrollView
+            horizontal
+            pagingEnabled
+            snapToInterval={Dimensions.get("window").width}
+          >
+            {filmes.map((produto) => (
+              <CardA
+                nome={produto.nome}
+                preco={produto.preco}
+                capa={produto.capa}
+                key={produto.id}
+                produto={produto}
+                onPress={() => handleProdutoPress(produto)}
+              />
+            ))}
+          </ScrollView>
+          <Text style={styles.titulo}>Outros Produtos</Text>
+          <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+            {filmes2.map((filme) => (
+              <CardB
+                nome={filme.nome}
+                preco={filme.preco}
+                capa={filme.capa}
+                key={filme.id}
+                onPress={() => handleProdutoPress(filme)}
+              />
+            ))}
+          </ScrollView>
+        </View>
+      </ScrollView>
+    </>
   );
 }
 

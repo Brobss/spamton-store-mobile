@@ -10,46 +10,22 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons/faCartShopping";
 import CardA from "../src/components/CardA";
+import { useNavigation } from "@react-navigation/native";
 
-export default function App() {
+export default function App(props) {
+  const navigation = useNavigation();
+  const { nome, preco, capa } = props;
   const [livros, setLivros] = React.useState([]);
-  const removerItem = (id) => {
-    const index = livros.findIndex((livro) => livro.id === id);
-    const novaLista = [...livros];
-    novaLista.splice(index, 1);
-    setLivros(novaLista);
-  };
-
   return (
     <ScrollView style={styles.container}>
       <ScrollView horizontal pagingEnabled style={{ height: 410 }}>
-        <Image
-          source={{
-            uri: "https://vitat.com.br/wp-content/uploads/2022/04/casca-de-banana-1.jpg",
-          }}
-          style={styles.foto}
-        />
-        <Image
-          source={{
-            uri: "https://www.mundoboaforma.com.br/wp-content/uploads/2018/03/casca-de-banana.jpg",
-          }}
-          style={styles.foto}
-        />
-        <Image
-          source={{
-            uri: "https://agroalmanaque.files.wordpress.com/2015/02/casca-de-banana.jpg",
-          }}
-          style={styles.foto}
-        />
-        <Image
-          source={{
-            uri: "https://www.jcam.com.br/wp-content/uploads/2022/07/casca-de-banana-no-fundo-branco_35712-215.jpg",
-          }}
-          style={styles.foto}
-        />
+        <Image source={{ uri: props.capa }} style={styles.foto} />
+        <Image source={{ uri: props.capa }} style={styles.foto} />
+        <Image source={{ uri: props.capa }} style={styles.foto} />
+        <Image source={{ uri: props.capa }} style={styles.foto} />
       </ScrollView>
-      <Text style={styles.titulo}>Casca de Banana</Text>
-      <Text style={styles.preco}>R$ 2,75</Text>
+      <Text style={styles.titulo}>{props.nome}</Text>
+      <Text style={styles.preco}>R$ {props.preco}</Text>
       <View style={styles.botoes}>
         <TouchableOpacity style={styles.btnCompra}>
           <Text>Comprar Agora</Text>
@@ -59,6 +35,13 @@ export default function App() {
           <Text>+ Add ao Carrinho</Text>
         </TouchableOpacity>
       </View>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.goBack();
+        }}
+      >
+        <Text style={styles.titulo}>Voltar</Text>
+      </TouchableOpacity>
       <Text style={styles.titulo}>Placeholder</Text>
       <Text style={styles.titulo}>Placeholder</Text>
       <Text style={styles.titulo}>Placeholder</Text>
