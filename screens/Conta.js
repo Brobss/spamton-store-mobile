@@ -10,14 +10,6 @@ import React from "react";
 import CardA from "../src/components/CardA";
 
 export default function App() {
-  const [livros, setLivros] = React.useState([]);
-  const removerItem = (id) => {
-    const index = livros.findIndex((livro) => livro.id === id);
-    const novaLista = [...livros];
-    novaLista.splice(index, 1);
-    setLivros(novaLista);
-  };
-
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Seus Dados:</Text>
@@ -27,9 +19,12 @@ export default function App() {
         }}
         style={styles.foto}
       />
-      <Text style={styles.textInfo}>Nome:</Text>
-      <Text style={styles.textInfo}>Endereço:</Text>
-      <Text style={styles.textInfo}>Telefone:</Text>
+      <Text style={styles.textInfo}>Nome: Rodrigasso da Silva Bacanão</Text>
+      <Text style={styles.textInfo}>Endereço: Rua Bacanas 464</Text>
+      <Text style={styles.textInfo}>Telefone: (11)1111-1112</Text>
+      <TouchableOpacity style={styles.btnEdit}>
+        <Text style={styles.textoBtnEdit}>Editar Informações</Text>
+      </TouchableOpacity>
       <TouchableOpacity style={styles.btnConta}>
         <Text style={styles.textoBtn}>Seus Pedidos</Text>
       </TouchableOpacity>
@@ -47,7 +42,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 30,
     margin: 10,
-    padding: 20,
     width: "100%",
   },
   titulo: {
@@ -56,10 +50,10 @@ const styles = StyleSheet.create({
   },
   btnConta: {
     backgroundColor: "red",
-    width: "50%",
+    width: "90%",
     padding: 10,
-    borderRadius: 12,
-    marginLeft: 20,
+    borderRadius: 7,
+    alignSelf: "center",
   },
   textoBtn: {
     color: "white",
@@ -69,10 +63,10 @@ const styles = StyleSheet.create({
   },
   textInfo: {
     color: "white",
-    fontSize: 15,
+    fontSize: 17,
     margin: 5,
+    marginHorizontal: 10,
     padding: 5,
-    width: "30%",
     flexDirection: "row",
   },
   foto: {
@@ -82,5 +76,18 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderRadius: 1500,
     alignSelf: "center",
+  },
+  btnEdit: {
+    backgroundColor: "yellow",
+    width: "90%",
+    padding: 10,
+    borderRadius: 7,
+    alignSelf: "center",
+    marginVertical: 10,
+  },
+  textoBtnEdit: {
+    color: "black",
+    fontSize: 20,
+    textAlign: "center",
   },
 });
