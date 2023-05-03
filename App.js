@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
   },
   foto: {
-    width: 30,
+    width: 37,
     height: 50,
     marginLeft: 10,
     marginVertical: 5,
