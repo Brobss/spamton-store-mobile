@@ -1,8 +1,8 @@
 import React from "react";
 
 import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Image, StatusBar } from "react-native";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { Image, StatusBar, Text, StyleSheet, View } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons/faCartShopping";
 import { faHouse } from "@fortawesome/free-solid-svg-icons/faHouse";
@@ -14,31 +14,25 @@ import Conta from "./screens/Conta";
 import Carrinho from "./screens/Carrinho";
 import Series from "./screens/Series";
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialTopTabNavigator();
 
 function MyTabs() {
   const CorBtn = "white";
   return (
     <Tab.Navigator
+      initialRouteName="Home"
+      tabBarPosition="bottom"
+      style={{ backgroundColor: "black" }}
       screenOptions={({ route }) => ({
-        headerShown: true,
+        headerShown: false,
         tabBarStyle: {
-          color: "white",
           backgroundColor: "black",
-          borderTopWidth: 0,
-        },
-        headerStyle: {
-          backgroundColor: "black",
-        },
-        headerTitleStyle: {
-          color: "#fff",
-          elevation: 0,
-          shadowOpacity: 0,
-          borderBottomWidth: 0,
+          borderWidth: 0,
         },
         tabBarLabelStyle: {
           display: "none",
         },
+        tabBarIndicatorStyle: { display: "none" },
       })}
     >
       <Tab.Screen
@@ -51,7 +45,7 @@ function MyTabs() {
               <FontAwesomeIcon
                 icon={faHouse}
                 color={focused ? "red" : "white"}
-                size={focused ? 30 : 22}
+                size={22}
               />
             );
           },
@@ -66,7 +60,7 @@ function MyTabs() {
               <FontAwesomeIcon
                 icon={faCartShopping}
                 color={focused ? "red" : "white"}
-                size={focused ? 30 : 22}
+                size={22}
               />
             );
           },
@@ -82,7 +76,7 @@ function MyTabs() {
               <FontAwesomeIcon
                 icon={faUser}
                 color={focused ? "red" : "white"}
-                size={focused ? 30 : 22}
+                size={22}
               />
             );
           },
@@ -98,7 +92,7 @@ function MyTabs() {
               <FontAwesomeIcon
                 icon={faBars}
                 color={focused ? "red" : "white"}
-                size={focused ? 30 : 22}
+                size={22}
               />
             );
           },
@@ -110,9 +104,42 @@ function MyTabs() {
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <StatusBar backgroundColor="black" barStyle="light-content" />
-      <MyTabs />
-    </NavigationContainer>
+    <>
+      <View style={styles.caixa}>
+        <Image
+          style={styles.foto}
+          source={{
+            uri: "https://static.wikia.nocookie.net/villains/images/d/d9/Spamton_battle_static.png/",
+          }}
+        />
+        <Text style={styles.header}>Spamton Store</Text>
+      </View>
+
+      <NavigationContainer>
+        <StatusBar backgroundColor="black" barStyle="light-content" />
+        <MyTabs />
+      </NavigationContainer>
+    </>
   );
 }
+
+const styles = StyleSheet.create({
+  header: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "bold",
+    padding: 15,
+    backgroundColor: "black",
+  },
+  caixa: {
+    backgroundColor: "black",
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  foto: {
+    width: 30,
+    height: 50,
+    marginLeft: 10,
+    marginVertical: 5,
+  },
+});

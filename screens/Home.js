@@ -268,10 +268,10 @@ const styles = StyleSheet.create({
     padding: 5,
     color: "white",
     fontSize: 30,
-    marginLeft: 10,
-    marginTop: 5,
+    paddingLeft: 15,
     flexDirection: "row",
     flexWrap: "wrap",
+    backgroundColor: "black",
   },
   textvoltar: {
     color: "white",
