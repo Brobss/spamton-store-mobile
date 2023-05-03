@@ -9,12 +9,11 @@ import {
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons/faCartShopping";
-import CardA from "../src/components/CardA";
 import { useNavigation } from "@react-navigation/native";
 
 export default function App(props) {
   const navigation = useNavigation();
-  const { nome, preco, capa } = props;
+  const { nome, preco, capa, descricao } = props;
   const [livros, setLivros] = React.useState([]);
   return (
     <ScrollView style={styles.container}>
@@ -35,21 +34,8 @@ export default function App(props) {
           <Text>+ Add ao Carrinho</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.goBack();
-        }}
-      >
-        <Text style={styles.titulo}>Voltar</Text>
-      </TouchableOpacity>
-      <Text style={styles.titulo}>Placeholder</Text>
-      <Text style={styles.titulo}>Placeholder</Text>
-      <Text style={styles.titulo}>Placeholder</Text>
-      <Text style={styles.titulo}>Placeholder</Text>
-      <Text style={styles.titulo}>Placeholder</Text>
-      <Text style={styles.titulo}>Placeholder</Text>
-      <Text style={styles.titulo}>Placeholder</Text>
-      <Text style={styles.titulo}>Placeholder</Text>
+      <Text style={styles.titulo}>Descrição:</Text>
+      <Text style={styles.desc}>{props.descricao}</Text>
     </ScrollView>
   );
 }
@@ -95,5 +81,11 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     width: 410,
     aspectRatio: 1,
+  },
+  desc: {
+    color: "white",
+    fontSize: 20,
+    marginHorizontal: 10,
+    marginBottom: 100,
   },
 });

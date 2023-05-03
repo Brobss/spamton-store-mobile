@@ -28,7 +28,7 @@ export default function App() {
       >
         {itens.map((item) => (
           <>
-            <View style={styles.item}>
+            <View key={item.id} style={styles.item}>
               <Text style={styles.nomeItem}>{item.nome}</Text>
               <Text style={styles.precoItem}>R$ {item.preco}</Text>
               <TouchableOpacity style={styles.botao}>

@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons/faCartShopping";
 
 export default function Card(props) {
+  const { nome, preco, capa, onPress } = props;
   return (
-    <TouchableOpacity style={styles.card}>
+    <TouchableOpacity onPress={onPress} style={styles.card}>
       <Image source={{ uri: props.capa }} style={styles.capa} />
       <Text style={styles.nomeProduto}>{props.nome}</Text>
       <Text style={styles.preco}>R$ {props.preco}</Text>
