@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 7,
     alignSelf: "center",
+    marginBottom: 10,
   },
   textoBtn: {
     color: "white",
