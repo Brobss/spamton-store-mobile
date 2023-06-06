@@ -7,9 +7,16 @@ import {
   Image,
 } from "react-native";
 import React from "react";
-import CardA from "../src/components/CardA";
+import { useSetRecoilState, useRecoilValue } from "recoil";
+import * as SecureStore from "expo-secure-store";
+import { userState } from "../src/recoil/atoms/auth";
 
 export default function App() {
+  const setUser = useSetRecoilState(userState);
+  const logout = async () => {
+    setUser({ loggedIn: false, access_token: null, refresh_token: null });
+    await SecureStore.deleteItemAsync("access_token");
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Seus Dados:</Text>
@@ -27,6 +34,9 @@ export default function App() {
       </TouchableOpacity>
       <TouchableOpacity style={styles.btnConta}>
         <Text style={styles.textoBtn}>Seus Pedidos</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.btnConta} onPress={() => logout()}>
+        <Text style={styles.textoBtn}>Logout</Text>
       </TouchableOpacity>
     </View>
   );
