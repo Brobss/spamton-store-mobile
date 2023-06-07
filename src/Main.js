@@ -37,11 +37,7 @@ export default function Main() {
 
   return (
     <>
-      <StatusBar
-        barStyle="dark-content"
-        translucent={true}
-        backgroundColor={"transparent"}
-      />
+      <StatusBar barStyle="light-content" backgroundColor="black" />
       <View style={styles.caixa}>
         <Image
           style={styles.foto}
@@ -89,6 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     flexDirection: "row",
     flexWrap: "wrap",
+    marginTop: StatusBar.currentHeight,
   },
   foto: {
     width: 37,

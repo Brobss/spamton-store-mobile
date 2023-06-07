@@ -58,7 +58,7 @@ export default function LoginScreen() {
       <TouchableOpacity style={styles.Botom} onPress={() => login()}>
         <Text style={styles.textoCor}>Login</Text>
       </TouchableOpacity>
-      <Text>{errorMsg}</Text>
+      <Text style={styles.textoCorErro}>{errorMsg}</Text>
     </View>
   );
 }
@@ -66,7 +66,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#252525",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -77,9 +77,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     borderRadius: 10,
+    borderColor: "white",
+    backgroundColor: "grey",
   },
   Botom: {
-    backgroundColor: "#252525",
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
     margin: 10,
@@ -89,7 +91,12 @@ const styles = StyleSheet.create({
   },
   textoCor: {
     fontSize: 20,
-    color: "#fff",
+    color: "black",
+    margin: 10,
+  },
+  textoCorErro: {
+    fontSize: 20,
+    color: "red",
     margin: 10,
   },
 });

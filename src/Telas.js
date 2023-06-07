@@ -8,7 +8,6 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons/faCartShopping
 import { faHouse } from "@fortawesome/free-solid-svg-icons/faHouse";
 import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
 import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
-
 import Home from "../screens/Home";
 import Conta from "../screens/Conta";
 import Carrinho from "../screens/Carrinho";
