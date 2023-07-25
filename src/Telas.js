@@ -3,17 +3,29 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { StatusBar } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons/faCartShopping";
 import { faHouse } from "@fortawesome/free-solid-svg-icons/faHouse";
 import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
 import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
-import Home from "../screens/Home";
-import Conta from "../screens/Conta";
-import Carrinho from "../screens/Carrinho";
+import Home from "../screens/Home/index";
+import Conta from "../screens/Conta/index";
+import Carrinho from "../screens/Carrinho/index";
 import Series from "../screens/Series";
+import Produto from "../screens/Produto";
 
 const Tab = createMaterialTopTabNavigator();
+const Stack = createNativeStackNavigator();
+
+function HomeRoutes() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Produto" component={Produto} />
+    </Stack.Navigator>
+  );
+}
 
 function MyTabs() {
   const CorBtn = "white";
@@ -36,7 +48,7 @@ function MyTabs() {
     >
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeRoutes}
         options={{
           title: "Home",
           tabBarIcon: ({ size, focused, color }) => {

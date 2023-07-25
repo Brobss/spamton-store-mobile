@@ -9,7 +9,7 @@ import {
 import React from "react";
 import { useSetRecoilState, useRecoilValue } from "recoil";
 import * as SecureStore from "expo-secure-store";
-import { userState } from "../src/recoil/atoms/auth";
+import { userState } from "../../src/recoil/atoms/auth";
 
 export default function App() {
   const setUser = useSetRecoilState(userState);

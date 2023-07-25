@@ -11,20 +11,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons/faCartShopping";
 import { useNavigation } from "@react-navigation/native";
 
-export default function App(props) {
-  const navigation = useNavigation();
-  const { nome, preco, capa, descricao } = props;
-  const [livros, setLivros] = React.useState([]);
+export default function Produto({ route, navigation }) {
+  const { item } = route.params;
+
   return (
     <ScrollView style={styles.container}>
       <ScrollView horizontal pagingEnabled style={{ height: 410 }}>
-        <Image source={{ uri: props.capa }} style={styles.foto} />
-        <Image source={{ uri: props.capa }} style={styles.foto} />
-        <Image source={{ uri: props.capa }} style={styles.foto} />
-        <Image source={{ uri: props.capa }} style={styles.foto} />
+        <Image source={{ uri: item.capa }} style={styles.foto} />
+        <Image source={{ uri: item.capa }} style={styles.foto} />
+        <Image source={{ uri: item.capa }} style={styles.foto} />
+        <Image source={{ uri: item.capa }} style={styles.foto} />
       </ScrollView>
-      <Text style={styles.titulo}>{props.nome}</Text>
-      <Text style={styles.preco}>R$ {props.preco}</Text>
+      <Text style={styles.titulo}>{item.nome}</Text>
+      <Text style={styles.preco}>R$ {item.preco}</Text>
       <View style={styles.botoes}>
         <TouchableOpacity style={styles.btnCompra}>
           <Text>Comprar Agora</Text>
@@ -35,7 +34,7 @@ export default function App(props) {
         </TouchableOpacity>
       </View>
       <Text style={styles.titulo}>Descrição:</Text>
-      <Text style={styles.desc}>{props.descricao}</Text>
+      <Text style={styles.desc}>{item.descricao}</Text>
     </ScrollView>
   );
 }

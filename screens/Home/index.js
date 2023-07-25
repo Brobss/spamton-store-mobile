@@ -6,15 +6,12 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Dimensions } from "react-native";
 
-import CardA from "../src/components/CardA";
-import CardB from "../src/components/CardB";
-import Produto from "../screens/Produto";
+import CardA from "../../src/components/CardA";
+import CardB from "../../src/components/CardB";
 
-export default function App() {
+export default function App({ navigation }) {
   const [filmes, setFilmes] = React.useState([
     {
       id: 1,
@@ -176,33 +173,6 @@ export default function App() {
         "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
     },
   ]);
-  const [produtoSelecionado, setProdutoSelecionado] = React.useState(null);
-
-  const handleProdutoPress = (produto) => {
-    setProdutoSelecionado(produto);
-  };
-
-  const handleVoltarPress = () => {
-    setProdutoSelecionado(null);
-  };
-
-  if (produtoSelecionado) {
-    return (
-      <View style={styles.container}>
-        <TouchableOpacity style={styles.voltar} onPress={handleVoltarPress}>
-          <FontAwesomeIcon color="white" size={22} icon={faArrowLeft} />
-          <Text style={styles.textvoltar}>Voltar ao menu</Text>
-        </TouchableOpacity>
-        <Produto
-          nome={produtoSelecionado.nome}
-          preco={produtoSelecionado.preco}
-          capa={produtoSelecionado.capa}
-          descricao={produtoSelecionado.descricao}
-          key={produtoSelecionado.id}
-        />
-      </View>
-    );
-  }
 
   return (
     <>
@@ -234,7 +204,9 @@ export default function App() {
                 capa={produto.capa}
                 key={produto.id}
                 produto={produto}
-                onPress={() => handleProdutoPress(produto)}
+                onPress={() =>
+                  navigation.navigate("Produto", { item: produto })
+                }
               />
             ))}
           </ScrollView>
