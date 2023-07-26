@@ -8,7 +8,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { userState } from "../src/recoil/atoms/auth";
 
-import LoginScreen from "../screens/Login";
+import LoginScreen from "../src/screens/Login";
 import HomeScreen from "../src/Telas";
 
 const Stack = createNativeStackNavigator();
@@ -38,7 +38,7 @@ export default function Main() {
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="black" />
-      <View style={styles.caixa}>
+      {/* <View style={styles.caixa}>
         <Image
           style={styles.foto}
           source={{
@@ -46,7 +46,7 @@ export default function Main() {
           }}
         />
         <Text style={styles.header}>Spamton Store</Text>
-      </View>
+      </View> */}
       <NavigationContainer>
         <Stack.Navigator
           style={{ backgroundColor: "black" }}

@@ -4,16 +4,18 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { StatusBar } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons/faCartShopping";
 import { faHouse } from "@fortawesome/free-solid-svg-icons/faHouse";
 import { faUser } from "@fortawesome/free-solid-svg-icons/faUser";
 import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
-import Home from "../screens/Home/index";
-import Conta from "../screens/Conta/index";
-import Carrinho from "../screens/Carrinho/index";
-import Series from "../screens/Series";
-import Produto from "../screens/Produto";
+
+import Home from "../src/screens/Home/index";
+import Conta from "../src/screens/Conta/index";
+import Carrinho from "../src/screens/Carrinho/index";
+import Series from "../src/screens/Series";
+import Produto from "../src/screens/Produto";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -21,8 +23,97 @@ const Stack = createNativeStackNavigator();
 function HomeRoutes() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Produto" component={Produto} />
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          title: "Página Inicial",
+          headerStyle: {
+            backgroundColor: "#000000",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Produto"
+        component={Produto}
+        options={{
+          title: "Detalhes do Produto",
+          headerStyle: {
+            backgroundColor: "#000000",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function CarrinhoRoutes() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Carrinho"
+        component={Carrinho}
+        options={{
+          title: "Carrinho de Compras",
+          headerStyle: {
+            backgroundColor: "#000000",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function ContaRoutes() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Conta"
+        component={Conta}
+        options={{
+          title: "Minha Conta",
+          headerStyle: {
+            backgroundColor: "#000000",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function OpcoesRoutes() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Opcoes"
+        component={Series}
+        options={{
+          title: "Opções",
+          headerStyle: {
+            backgroundColor: "#000000",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 }
@@ -64,7 +155,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Carrinho"
-        component={Carrinho}
+        component={CarrinhoRoutes}
         options={{
           tabBarIcon: ({ size, focused, color }) => {
             return (
@@ -79,7 +170,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Conta"
-        component={Conta}
+        component={ContaRoutes}
         options={{
           title: "Conta",
           tabBarIcon: ({ size, focused, color }) => {
@@ -95,7 +186,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Opções"
-        component={Series}
+        component={OpcoesRoutes}
         options={{
           title: "Opções",
           tabBarIcon: ({ size, focused, color }) => {

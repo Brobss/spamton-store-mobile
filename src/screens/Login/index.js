@@ -11,8 +11,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import { userState } from "../../src/recoil/atoms/auth";
-import LoginApi from "../../src/api/login";
+import { userState } from "../../recoil/atoms/auth";
+import LoginApi from "../../api/login";
 
 const loginApi = new LoginApi();
 

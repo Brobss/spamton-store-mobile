@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, ScrollView } from "react-native";
 import React from "react";
-import CardA from "../src/components/CardA";
+import CardA from "../components/CardA";
 
 export default function App() {
   const [series, setSeries] = React.useState([
