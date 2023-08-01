@@ -17,10 +17,10 @@ export default function Produto({ route, navigation }) {
   return (
     <ScrollView style={styles.container}>
       <ScrollView horizontal pagingEnabled style={{ height: 410 }}>
-        <Image source={{ uri: item.capa }} style={styles.foto} />
-        <Image source={{ uri: item.capa }} style={styles.foto} />
-        <Image source={{ uri: item.capa }} style={styles.foto} />
-        <Image source={{ uri: item.capa }} style={styles.foto} />
+        <Image source={{ uri: item.thumb }} style={styles.foto} />
+        <Image source={{ uri: item.thumb }} style={styles.foto} />
+        <Image source={{ uri: item.thumb }} style={styles.foto} />
+        <Image source={{ uri: item.thumb }} style={styles.foto} />
       </ScrollView>
       <Text style={styles.titulo}>{item.nome}</Text>
       <Text style={styles.preco}>R$ {item.preco}</Text>

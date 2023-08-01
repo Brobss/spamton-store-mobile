@@ -11,13 +11,13 @@ export default function App({ navigation }) {
   const [recomendados, setRecomendados] = React.useState([]);
   useEffect(() => {
     async function carregarRecomendados() {
-      const response = await api.get("/recomendados");
+      const response = await api.get("/produtos");
       const data = response.data.map((prod) => ({
+        produto: prod,
         id: prod.id,
         nome: prod.nome,
         preco: prod.preco,
-        capa: prod.capa,
-        produto: prod,
+        thumb: prod.thumbnail,
         descricao: prod.descricao,
       }));
       setRecomendados(data);
@@ -26,19 +26,25 @@ export default function App({ navigation }) {
   }, []);
 
   const [produtos, setProdutos] = React.useState([]);
+
   useEffect(() => {
     async function carregarProdutos() {
-      const response = await api.get("/produtos");
-      const data = response.data.map((prod) => ({
-        id: prod.id,
-        nome: prod.nome,
-        preco: prod.preco,
-        capa: prod.capa,
-        produto: prod,
-        descricao: prod.descricao,
-      }));
-      setProdutos(data);
+      try {
+        const response = await api.get("/produtos");
+        const data = response.data.map((prod) => ({
+          produto: prod,
+          id: prod.id,
+          nome: prod.nome,
+          preco: prod.preco,
+          thumb: prod.thumbnail,
+          descricao: prod.descricao,
+        }));
+        setProdutos(data);
+      } catch (error) {
+        console.error("Erro ao carregar os produtos:", error);
+      }
     }
+
     carregarProdutos();
   }, []);
 
@@ -56,7 +62,7 @@ export default function App({ navigation }) {
               <CardA
                 nome={produto.nome}
                 preco={produto.preco}
-                capa={produto.capa}
+                capa={produto.thumb}
                 key={produto.id}
                 produto={produto}
                 onPress={() =>
@@ -71,7 +77,7 @@ export default function App({ navigation }) {
               <CardB
                 nome={produto.nome}
                 preco={produto.preco}
-                capa={produto.capa}
+                capa={produto.thumb}
                 key={produto.id}
                 produto={produto}
                 onPress={() =>
