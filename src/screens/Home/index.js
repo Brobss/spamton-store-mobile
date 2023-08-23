@@ -37,7 +37,6 @@ export default function App({ navigation }) {
           nome: prod.nome,
           preco: prod.preco,
           thumb: prod.thumbnail,
-          descricao: prod.descricao,
         }));
         setProdutos(data);
       } catch (error) {

@@ -126,6 +126,7 @@ function MyTabs() {
       tabBarPosition="bottom"
       style={{ backgroundColor: "black" }}
       screenOptions={({ route }) => ({
+        swipeEnabled: false,
         headerShown: false,
         tabBarStyle: {
           backgroundColor: "black",
