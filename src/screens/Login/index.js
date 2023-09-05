@@ -9,6 +9,8 @@ import {
   TextInput,
   View,
   TouchableOpacity,
+  Image,
+  StatusBar,
 } from "react-native";
 
 import { userState } from "../../recoil/atoms/auth";
@@ -41,6 +43,16 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.viewFoto}>
+        <StatusBar backgroundColor="black" barStyle="light-content" />
+        <Image
+          source={require("../../../assets/spamtonFundo.jpg")}
+          style={styles.foto}
+        />
+      </View>
+      <Text style={styles.textoCorSpamton}>
+        Diga-me sua identidade [[CAMARADA]]
+      </Text>
       <TextInput
         placeholder="Endereço de Email"
         value={email}
@@ -64,6 +76,11 @@ export default function LoginScreen() {
 }
 
 const styles = StyleSheet.create({
+  viewFoto: {
+    width: "100%",
+    backgroundColor: "black",
+    paddingTop: 90,
+  },
   container: {
     flex: 1,
     backgroundColor: "#252525",
@@ -88,6 +105,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     width: 300,
+    marginBottom: 45,
   },
   textoCor: {
     fontSize: 20,
@@ -98,5 +116,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "red",
     margin: 10,
+  },
+  textoCorSpamton: {
+    fontSize: 25,
+    color: "white",
+    margin: 10,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  foto: {
+    width: "100%",
+    height: 350,
   },
 });
