@@ -19,37 +19,37 @@ const loginApi = new LoginApi();
 export default function LoginScreen() {
   const setUser = useSetRecoilState(userState);
 
-  const [username, setUsername] = React.useState("");
+  const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [errorMsg, setErrorMsg] = React.useState(null);
 
   const login = async () => {
     try {
-      const data = await loginApi.login(username, password);
+      const data = await loginApi.login(email, password);
       setUser({
         loggedIn: true,
-        access_token: data.access_token,
-        refresh_token: data.refresh_token,
+        access: data.access,
+        refresh: data.refresh,
       });
-      await SecureStore.setItemAsync("access_token", data.access_token);
+      await SecureStore.setItemAsync("access", data.access);
     } catch (error) {
-      setUser({ loggedIn: false, access_token: null, refresh_token: null });
+      setUser({ loggedIn: false, access: null, refresh: null });
       setErrorMsg("Usuário ou senha inválidos!");
-      await SecureStore.deleteItemAsync("access_token");
+      await SecureStore.deleteItemAsync("access");
     }
   };
 
   return (
     <View style={styles.container}>
       <TextInput
-        placeholder="Username"
-        value={username}
+        placeholder="Endereço de Email"
+        value={email}
         Logout
-        onChangeText={setUsername}
+        onChangeText={setEmail}
         style={styles.InputFoda}
       />
       <TextInput
-        placeholder="Password"
+        placeholder="Senha"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
