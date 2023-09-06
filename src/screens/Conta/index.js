@@ -14,8 +14,8 @@ import { userState } from "../../recoil/atoms/auth";
 export default function App() {
   const setUser = useSetRecoilState(userState);
   const logout = async () => {
-    setUser({ loggedIn: false, access_token: null, refresh_token: null });
-    await SecureStore.deleteItemAsync("access_token");
+    setUser({ loggedIn: false, access: null, refresh: null });
+    await SecureStore.deleteItemAsync("access");
   };
   return (
     <View style={styles.container}>

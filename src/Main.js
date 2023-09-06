@@ -19,16 +19,16 @@ export default function Main() {
 
   React.useEffect(() => {
     const bootstrapAsync = async () => {
-      let access_token = null;
+      let access = null;
       try {
-        access_token = await SecureStore.getItemAsync("access_token");
+        access = await SecureStore.getItemAsync("access");
       } catch (e) {
         console.log(e);
       }
-      if (access_token === null) {
-        setUser({ access_token: null, loggedIn: false });
+      if (access === null) {
+        setUser({ access: null, loggedIn: false });
       } else {
-        setUser({ access_token, loggedIn: true });
+        setUser({ access, loggedIn: true });
       }
     };
 
