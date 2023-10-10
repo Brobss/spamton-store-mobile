@@ -17,7 +17,7 @@ export default function App({ navigation }) {
         id: prod.id,
         nome: prod.nome,
         preco: prod.preco,
-        thumb: prod.thumbnail,
+        thumb: prod.thumbnail.file,
         descricao: prod.descricao,
       }));
       setRecomendados(data);
@@ -36,7 +36,7 @@ export default function App({ navigation }) {
           id: prod.id,
           nome: prod.nome,
           preco: prod.preco,
-          thumb: prod.thumbnail,
+          thumb: prod.thumbnail.file,
         }));
         setProdutos(data);
       } catch (error) {
