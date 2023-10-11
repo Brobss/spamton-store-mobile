@@ -6,12 +6,31 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSetRecoilState, useRecoilValue } from "recoil";
 import * as SecureStore from "expo-secure-store";
 import { userState } from "../../recoil/atoms/auth";
+import pegarInfo from "../../api/userinfo";
+import Produto from "../Produto";
+
+const PegarInfo = new pegarInfo();
 
 export default function App() {
+  const [usuario, setUsuario] = React.useState([]);
+
+  useEffect(() => {
+    async function info() {
+      try {
+        const data = await PegarInfo.buscarInfo();
+        setUsuario(data);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    info();
+  }, []);
+
   const setUser = useSetRecoilState(userState);
   const logout = async () => {
     setUser({ loggedIn: false, access: null, refresh: null });
@@ -20,15 +39,14 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Seus Dados:</Text>
-      <Image
-        source={{
-          uri: "https://as2.ftcdn.net/v2/jpg/00/49/22/63/1000_F_49226343_zrW0Mlu6hqxzgN2gUBwW8EGaHmD5GZU6.jpg",
-        }}
-        style={styles.foto}
-      />
-      <Text style={styles.textInfo}>Nome: Rodrigasso da Silva Bacanão</Text>
-      <Text style={styles.textInfo}>Endereço: Rua Bacanas 464</Text>
-      <Text style={styles.textInfo}>Telefone: (11)1111-1112</Text>
+      <Image source={{ uri: usuario.imagem_perfil }} style={styles.foto} />
+      <Text style={styles.textInfo}>
+        Nome: {usuario.first_name} {usuario.last_name}
+      </Text>
+      <Text style={styles.textInfo}>Email: {usuario.email}</Text>
+      {/* <Text style={styles.textInfo}>Endereço: Rua Bacanas 464</Text> */}
+      <Text style={styles.textInfo}>Telefone: {usuario.telefone}</Text>
+      <Text style={styles.textInfo}>CPF: {usuario.cpf}</Text>
       <TouchableOpacity style={styles.btnEdit}>
         <Text style={styles.textoBtnEdit}>Editar Informações</Text>
       </TouchableOpacity>

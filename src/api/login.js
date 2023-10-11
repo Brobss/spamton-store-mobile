@@ -1,9 +1,9 @@
-import axios from "axios";
+import api from "../services/api";
 
 export default class LoginApi {
   async login(email, password) {
     try {
-      const { data } = await axios.post("http://191.52.55.23:19003/token/", {
+      const { data } = await api.post("http://191.52.55.23:19003/token/", {
         email,
         password,
       });
