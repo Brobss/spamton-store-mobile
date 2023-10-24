@@ -44,7 +44,6 @@ export default function App() {
         Nome: {usuario.first_name} {usuario.last_name}
       </Text>
       <Text style={styles.textInfo}>Email: {usuario.email}</Text>
-      {/* <Text style={styles.textInfo}>Endereço: Rua Bacanas 464</Text> */}
       <Text style={styles.textInfo}>Telefone: {usuario.telefone}</Text>
       <Text style={styles.textInfo}>CPF: {usuario.cpf}</Text>
       <TouchableOpacity style={styles.btnEdit}>
