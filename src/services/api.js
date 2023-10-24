@@ -2,7 +2,7 @@ import axios from "axios";
 import * as SecureStore from "expo-secure-store";
 
 const api = axios.create({
-  baseURL: "http://191.52.55.23:19003",
+  baseURL: "https://spamton-store-backend-dev-qzhk.1.us-1.fl0.io/",
 });
 
 api.interceptors.request.use(
