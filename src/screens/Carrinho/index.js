@@ -28,6 +28,7 @@ export default function App() {
   const [items, setItens] = React.useState([]);
   const [id, setId] = React.useState([]);
   const [email, setEmail] = React.useState([]);
+  let lista = [];
 
   useEffect(() => {
     async function carregarId() {
@@ -53,7 +54,10 @@ export default function App() {
         const carrinho = bruh.filter((item) => {
           return item.status == "Carrinho";
         });
-        setItens(carrinho);
+        for (let i = 0; i < carrinho.length; i++) {
+          lista.push(carrinho[i].itens);
+        }
+        setItens(lista);
         console.log(items);
       } catch (error) {
         console.error("Erro ao carregar os Itens:", error);
@@ -81,17 +85,15 @@ export default function App() {
           </>
         ))}
 
-        {itens.map((compra) => (
+        {items.map((item) => (
           <>
-            {compra.map((item) => (
-              <View key={item.id} style={styles.item}>
-                <Text style={styles.nomeItem}>{item.nome}</Text>
-                <Text style={styles.precoItem}>R$ {item.preco}</Text>
-                <TouchableOpacity style={styles.botao}>
-                  <Text style={{ color: "white", fontSize: 12 }}>Remover</Text>
-                </TouchableOpacity>
-              </View>
-            ))}
+            <View key={item.id} style={styles.item}>
+              <Text style={styles.nomeItem}>{item.produto.nome}</Text>
+              <Text style={styles.precoItem}>R$ {item.produto.preco}</Text>
+              <TouchableOpacity style={styles.botao}>
+                <Text style={{ color: "white", fontSize: 12 }}>Remover</Text>
+              </TouchableOpacity>
+            </View>
           </>
         ))}
         <TouchableOpacity style={styles.botaoFim}>
