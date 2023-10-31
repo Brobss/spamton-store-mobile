@@ -84,21 +84,16 @@ export default function App() {
         {itens.map((compra) => (
           <>
             {compra.map((item) => (
-              <>
-                <View key={item.id} style={styles.item}>
-                  <Text style={styles.nomeItem}>{item.nome}</Text>
-                  <Text style={styles.precoItem}>R$ {item.preco}</Text>
-                  <TouchableOpacity style={styles.botao}>
-                    <Text style={{ color: "white", fontSize: 12 }}>
-                      Remover
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </>
+              <View key={item.id} style={styles.item}>
+                <Text style={styles.nomeItem}>{item.nome}</Text>
+                <Text style={styles.precoItem}>R$ {item.preco}</Text>
+                <TouchableOpacity style={styles.botao}>
+                  <Text style={{ color: "white", fontSize: 12 }}>Remover</Text>
+                </TouchableOpacity>
+              </View>
             ))}
           </>
         ))}
-
         <TouchableOpacity style={styles.botaoFim}>
           <Text style={{ color: "white", fontSize: 15, alignSelf: "center" }}>
             Finalizar Compra
