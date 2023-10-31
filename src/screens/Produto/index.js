@@ -12,39 +12,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons/faCartShopping";
 import { useNavigation } from "@react-navigation/native";
 import api from "../../services/api";
+import ComprasApi from "../../api/compras";
+import pegarInfo from "../../api/userinfo";
 
-const showAlertCarrinho = () =>
-  Alert.alert(
-    "Adicionar ao Carrinho",
-    "Deseja mesmo adicionar ao carrinho?",
-    [
-      {
-        text: "Cancelar",
-        onPress: () =>
-          Alert.alert(
-            "Operação Cancelada",
-            "O Produto não foi adicionado ao Carrinho!"
-          ),
-        style: "cancel",
-      },
-      {
-        text: "Sim",
-        onPress: () =>
-          Alert.alert("Pronto!", "Produto Adicionado ao Carrinho!"),
-      },
-    ],
-    {
-      cancelable: true,
-      onDismiss: () => {
-        console.log("Dismissed");
-      },
-    }
-  );
+const PegarInfo = new pegarInfo();
+const comprasApi = new ComprasApi();
 
 export default function Produto({ route, navigation }) {
   const { item } = route.params;
   const [produto, setProduto] = React.useState([]);
   const [fotos, setFotos] = React.useState([]);
+  const [id, setId] = React.useState([]);
 
   useEffect(() => {
     async function carregarProduto() {
@@ -59,6 +37,64 @@ export default function Produto({ route, navigation }) {
     }
     carregarProduto();
   }, []);
+
+  useEffect(() => {
+    async function carregarId() {
+      try {
+        const data = await PegarInfo.buscarInfo();
+        setId(data.id);
+        console.log(id);
+      } catch (error) {
+        console.error("Erro ao carregar o Id do Usuário:", error);
+      }
+    }
+    carregarId();
+  }, []);
+
+  const addCarrinho = async () => {
+    try {
+      const response = await comprasApi.adicionarCompra({
+        itens: [
+          {
+            produto: produto.id,
+            quantidade: 1,
+          },
+        ],
+        usuario: id,
+      });
+      Alert.alert("Pronto!", "Produto Adicionado ao Carrinho!");
+    } catch (error) {
+      console.error("Erro ao adicionar ao carrinho:", error);
+      Alert.alert("Ops!", "Ocorreu um erro ao adicionar ao carrinho!");
+    }
+  };
+
+  const showAlertCarrinho = () =>
+    Alert.alert(
+      "Adicionar ao Carrinho",
+      "Deseja mesmo adicionar ao carrinho?",
+      [
+        {
+          text: "Cancelar",
+          onPress: () =>
+            Alert.alert(
+              "Operação Cancelada",
+              "O Produto não foi adicionado ao Carrinho!"
+            ),
+          style: "cancel",
+        },
+        {
+          text: "Sim",
+          onPress: () => addCarrinho(),
+        },
+      ],
+      {
+        cancelable: true,
+        onDismiss: () => {
+          console.log("Dismissed");
+        },
+      }
+    );
 
   return (
     <ScrollView style={styles.container}>

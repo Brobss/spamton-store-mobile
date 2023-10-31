@@ -17,23 +17,21 @@ const PegarInfo = new pegarInfo();
 
 export default function App() {
   const [usuario, setUsuario] = React.useState([]);
-  const imagem_perfil =
+  let imagem_perfil =
     "https://res.cloudinary.com/dnxjixtc0/image/upload/v1698777031/c2ctdpeovsgpeqwdq25q.jpg";
 
   useEffect(() => {
     async function info() {
       try {
         const data = await PegarInfo.buscarInfo();
+        if (!data) {
+          setUser({ loggedIn: false, access: null, refresh: null });
+          await SecureStore.deleteItemAsync("access");
+        }
         setUsuario(data);
         console.log(data);
-        if (!data.email) {
-          logout();
-        }
         if (data.imagem_perfil) {
           imagem_perfil = data.imagem_perfil;
-        } else {
-          imagem_perfil =
-            "https://res.cloudinary.com/dnxjixtc0/image/upload/v1698777031/c2ctdpeovsgpeqwdq25q.jpg";
         }
       } catch (error) {
         console.log(error);
