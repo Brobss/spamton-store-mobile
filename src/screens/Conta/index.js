@@ -17,6 +17,8 @@ const PegarInfo = new pegarInfo();
 
 export default function App() {
   const [usuario, setUsuario] = React.useState([]);
+  const imagem_perfil =
+    "https://res.cloudinary.com/dnxjixtc0/image/upload/v1698777031/c2ctdpeovsgpeqwdq25q.jpg";
 
   useEffect(() => {
     async function info() {
@@ -24,6 +26,15 @@ export default function App() {
         const data = await PegarInfo.buscarInfo();
         setUsuario(data);
         console.log(data);
+        if (!data.email) {
+          logout();
+        }
+        if (data.imagem_perfil) {
+          imagem_perfil = data.imagem_perfil;
+        } else {
+          imagem_perfil =
+            "https://res.cloudinary.com/dnxjixtc0/image/upload/v1698777031/c2ctdpeovsgpeqwdq25q.jpg";
+        }
       } catch (error) {
         console.log(error);
       }
@@ -39,7 +50,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Seus Dados:</Text>
-      <Image source={{ uri: usuario.imagem_perfil }} style={styles.foto} />
+      <Image source={{ uri: imagem_perfil }} style={styles.foto} />
       <Text style={styles.textInfo}>
         Nome: {usuario.first_name} {usuario.last_name}
       </Text>
@@ -101,7 +112,6 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
     width: "30%",
     aspectRatio: 1,
-    borderRadius: 5,
     borderRadius: 1500,
     alignSelf: "center",
   },
