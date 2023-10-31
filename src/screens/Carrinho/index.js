@@ -5,7 +5,13 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import ComprasApi from "../../api/compras";
+import pegarInfo from "../../api/userinfo";
+
+const PegarInfo = new pegarInfo();
+const comprasApi = new ComprasApi();
+
 export default function App() {
   const itens = [
     {
@@ -19,6 +25,43 @@ export default function App() {
       preco: "45,65",
     },
   ];
+  const [items, setItens] = React.useState([]);
+  const [id, setId] = React.useState([]);
+  const [email, setEmail] = React.useState([]);
+
+  useEffect(() => {
+    async function carregarId() {
+      try {
+        const data = await PegarInfo.buscarInfo();
+        setId(data.id);
+        setEmail(data.email);
+        console.log(id);
+      } catch (error) {
+        console.error("Erro ao carregar o Id do Usuário:", error);
+      }
+    }
+    carregarId();
+  }, []);
+
+  useEffect(() => {
+    async function carregarItens() {
+      try {
+        const response = await comprasApi.buscarCompras();
+        const bruh = response.filter((item) => {
+          return item.usuario == email;
+        });
+        const carrinho = bruh.filter((item) => {
+          return item.status == "Carrinho";
+        });
+        setItens(carrinho);
+        console.log(items);
+      } catch (error) {
+        console.error("Erro ao carregar os Itens:", error);
+      }
+    }
+    carregarItens();
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Itens no Carrinho:</Text>
