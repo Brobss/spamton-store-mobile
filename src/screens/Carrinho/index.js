@@ -28,7 +28,7 @@ export default function App() {
   const [items, setItens] = React.useState([]);
   const [id, setId] = React.useState([]);
   const [email, setEmail] = React.useState([]);
-  let lista = [];
+  const [lista, setLista] = React.useState([]);
 
   useEffect(() => {
     async function carregarId() {
@@ -47,18 +47,9 @@ export default function App() {
   useEffect(() => {
     async function carregarItens() {
       try {
-        const response = await comprasApi.buscarCompras();
-        const bruh = response.filter((item) => {
-          return item.usuario == email;
-        });
-        const carrinho = bruh.filter((item) => {
-          return item.status == "Carrinho";
-        });
-        for (let i = 0; i < carrinho.length; i++) {
-          lista.push(carrinho[i].itens);
-        }
-        setItens(lista);
-        console.log(items);
+        const data = await comprasApi.buscarCompras();
+        setItens(data);
+        console.log("Carrinho" + items);
       } catch (error) {
         console.error("Erro ao carregar os Itens:", error);
       }
@@ -73,28 +64,20 @@ export default function App() {
         contentContainerStyle={{ alignItems: "center" }}
         style={{ width: "100%" }}
       >
-        {itens.map((item) => (
-          <>
-            <View key={item.id} style={styles.item}>
-              <Text style={styles.nomeItem}>{item.nome}</Text>
-              <Text style={styles.precoItem}>R$ {item.preco}</Text>
+        {items.map((compra) => (
+          <View key={compra.id} style={styles.item}>
+            <>
+              <Text style={styles.nomeItem}>
+                {compra.itens[0].produto.nome}
+              </Text>
+              <Text style={styles.precoItem}>
+                R$ {compra.itens[0].produto.preco}
+              </Text>
               <TouchableOpacity style={styles.botao}>
                 <Text style={{ color: "white", fontSize: 12 }}>Remover</Text>
               </TouchableOpacity>
-            </View>
-          </>
-        ))}
-
-        {items.map((item) => (
-          <>
-            <View key={item.id} style={styles.item}>
-              <Text style={styles.nomeItem}>{item.produto.nome}</Text>
-              <Text style={styles.precoItem}>R$ {item.produto.preco}</Text>
-              <TouchableOpacity style={styles.botao}>
-                <Text style={{ color: "white", fontSize: 12 }}>Remover</Text>
-              </TouchableOpacity>
-            </View>
-          </>
+            </>
+          </View>
         ))}
         <TouchableOpacity style={styles.botaoFim}>
           <Text style={{ color: "white", fontSize: 15, alignSelf: "center" }}>
