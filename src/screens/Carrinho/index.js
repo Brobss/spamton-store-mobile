@@ -1,5 +1,6 @@
 import {
   StyleSheet,
+  RefreshControl,
   Text,
   View,
   ScrollView,
@@ -13,22 +14,22 @@ const PegarInfo = new pegarInfo();
 const comprasApi = new ComprasApi();
 
 export default function App() {
-  const itens = [
-    {
-      id: 1,
-      nome: "Among Action Figure",
-      preco: "95,50",
-    },
-    {
-      id: 2,
-      nome: "Saul Goodman",
-      preco: "45,65",
-    },
-  ];
+  const [refreshing, setRefreshing] = React.useState(false);
   const [items, setItens] = React.useState([]);
   const [id, setId] = React.useState([]);
   const [email, setEmail] = React.useState([]);
   const [lista, setLista] = React.useState([]);
+
+  const removerCarrinho = async (id) => {
+    try {
+      const response = await comprasApi.excluirCompra(id);
+      console.log(response);
+      const data = await comprasApi.buscarCompras();
+      setItens(data);
+    } catch (error) {
+      console.error("Erro ao excluir o item:", error);
+    }
+  };
 
   useEffect(() => {
     async function carregarId() {
@@ -57,12 +58,33 @@ export default function App() {
     carregarItens();
   }, []);
 
+  const carregarItens = async () => {
+    try {
+      const data = await comprasApi.buscarCompras();
+      setItens(data);
+      console.log("Carrinho" + items);
+    } catch (error) {
+      console.error("Erro ao carregar os Itens:", error);
+    }
+  };
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    carregarItens();
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
+
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Itens no Carrinho:</Text>
       <ScrollView
         contentContainerStyle={{ alignItems: "center" }}
         style={{ width: "100%" }}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
       >
         {items.map((compra) => (
           <View key={compra.id} style={styles.item}>
@@ -73,7 +95,10 @@ export default function App() {
               <Text style={styles.precoItem}>
                 R$ {compra.itens[0].produto.preco}
               </Text>
-              <TouchableOpacity style={styles.botao}>
+              <TouchableOpacity
+                onPress={() => removerCarrinho(compra.id)}
+                style={styles.botao}
+              >
                 <Text style={{ color: "white", fontSize: 12 }}>Remover</Text>
               </TouchableOpacity>
             </>
