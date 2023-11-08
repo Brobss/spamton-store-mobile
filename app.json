@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Spamton Store",
-    "slug": "Spamton Store",
+    "slug": "spamton-store",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.paulok3tchup.spamtonstore"
     },
     "web": {
       "favicon": "./assets/splash.gif"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a5838a90-66be-48cd-aa09-dab390db19b4"
+      }
     }
   }
 }
