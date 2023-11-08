@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  RefreshControl,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { Dimensions } from "react-native";
 
@@ -47,9 +53,21 @@ export default function App({ navigation }) {
     carregarProdutos();
   }, []);
 
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    carregarProdutos();
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
+
   return (
     <>
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
         <View style={styles.container}>
           <Text style={styles.titulo}>Recomendados</Text>
           <ScrollView
