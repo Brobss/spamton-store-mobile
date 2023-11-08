@@ -14,6 +14,7 @@ import CardA from "../../components/CardA";
 import CardB from "../../components/CardB";
 
 export default function App({ navigation }) {
+  const [refreshing, setRefreshing] = React.useState(false);
   const [recomendados, setRecomendados] = React.useState([]);
   useEffect(() => {
     async function carregarRecomendados() {
@@ -30,6 +31,18 @@ export default function App({ navigation }) {
     }
     carregarRecomendados();
   }, []);
+
+  const carregarRecomendados = async () => {
+    const response = await api.get("/produtos");
+    const data = response.data.map((prod) => ({
+      produto: prod,
+      id: prod.id,
+      nome: prod.nome,
+      preco: prod.preco,
+      thumb: prod.thumbnail.file,
+      descricao: prod.descricao,
+    }));
+  };
 
   const [produtos, setProdutos] = React.useState([]);
 
@@ -53,9 +66,22 @@ export default function App({ navigation }) {
     carregarProdutos();
   }, []);
 
+  const carregarProdutos = async () => {
+    const response = await api.get("/produtos");
+    const data = response.data.map((prod) => ({
+      produto: prod,
+      id: prod.id,
+      nome: prod.nome,
+      preco: prod.preco,
+      thumb: prod.thumbnail.file,
+      descricao: prod.descricao,
+    }));
+  };
+
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
     carregarProdutos();
+    carregarRecomendados();
     setTimeout(() => {
       setRefreshing(false);
     }, 2000);
