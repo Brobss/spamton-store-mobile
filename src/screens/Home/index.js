@@ -42,6 +42,7 @@ export default function App({ navigation }) {
       thumb: prod.thumbnail.file,
       descricao: prod.descricao,
     }));
+    setRecomendados(data);
   };
 
   const [produtos, setProdutos] = React.useState([]);
@@ -76,12 +77,13 @@ export default function App({ navigation }) {
       thumb: prod.thumbnail.file,
       descricao: prod.descricao,
     }));
+    setProdutos(data);
   };
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    carregarProdutos();
     carregarRecomendados();
+    carregarProdutos();
     setTimeout(() => {
       setRefreshing(false);
     }, 2000);

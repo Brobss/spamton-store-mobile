@@ -14,8 +14,9 @@ import { faBars } from "@fortawesome/free-solid-svg-icons/faBars";
 import Home from "../src/screens/Home/index";
 import Conta from "../src/screens/Conta/index";
 import Carrinho from "../src/screens/Carrinho/index";
-import Series from "../src/screens/Series";
+import Opcoes from "../src/screens/Opcoes/index";
 import Produto from "../src/screens/Produto";
+import Configuracoes from "../src/screens/Opcoes/Configuracoes/index";
 
 const Tab = createMaterialTopTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -42,6 +43,41 @@ function HomeRoutes() {
         component={Produto}
         options={{
           title: "Detalhes do Produto",
+          headerStyle: {
+            backgroundColor: "#000000",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function OpcoesRoutes() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Opcoes"
+        component={Opcoes}
+        options={{
+          title: "Mais Opções",
+          headerStyle: {
+            backgroundColor: "#000000",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Configurações"
+        component={Configuracoes}
+        options={{
+          title: "Configurações",
           headerStyle: {
             backgroundColor: "#000000",
           },
@@ -96,28 +132,6 @@ function ContaRoutes() {
     </Stack.Navigator>
   );
 }
-
-function OpcoesRoutes() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Opcoes"
-        component={Series}
-        options={{
-          title: "Opções",
-          headerStyle: {
-            backgroundColor: "#000000",
-          },
-          headerTintColor: "#fff",
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
-
 function MyTabs() {
   const CorBtn = "white";
   return (
